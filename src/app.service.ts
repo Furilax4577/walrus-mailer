@@ -1,8 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Get, Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  getDefault() {
+    return {
+      name: 'Mail Microservice',
+      status: 'online',
+      version: '1.0.0',
+      date: new Date(),
+    };
+  }
+
+  getHealth() {
+    return { status: 'ok' };
   }
 }
