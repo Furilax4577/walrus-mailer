@@ -5,9 +5,15 @@ import { MailController } from './controllers/mail/mail.controller';
 import { LoggerMiddleware } from './middlewares/logger/logger.middleware';
 import { APP_GUARD } from '@nestjs/core';
 import { DnsGuard } from './guards/dns/dns.guard';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
+  ],
   controllers: [AppController, MailController],
   providers: [
     AppService,
